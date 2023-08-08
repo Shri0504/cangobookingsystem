@@ -1,0 +1,436 @@
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--{% load static %}-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>-->
+<!--    </title>-->
+<!--    <style>-->
+<!--        *{-->
+<!--    box-sizing: border-box;-->
+<!--    -webkit-box-sizing: border-box;-->
+<!--    -moz-box-sizing: border-box;-->
+<!--}-->
+<!--body{-->
+<!--    font-family: Helvetica;-->
+<!--    -webkit-font-smoothing: antialiased;-->
+<!--    background:url("{% static 'images/train1.jpg' %}") no-repeat;-->
+<!--    background-size: 100%;-->
+<!--}-->
+
+<!--/* Table Styles */-->
+
+<!--.table-wrapper{-->
+<!--    margin: 10px 70px 70px;-->
+<!--    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );-->
+<!--}-->
+
+<!--.fl-table {-->
+<!--    border-radius: 5px;-->
+<!--    font-size: 12px;-->
+<!--    font-weight: normal;-->
+<!--    border: none;-->
+<!--    border-collapse: collapse;-->
+<!--    width: 100%;-->
+<!--    max-width: 100%;-->
+<!--    white-space: nowrap;-->
+<!--    background-color: white;-->
+<!--    opacity:0.9;-->
+<!--}-->
+
+<!--.fl-table td, .fl-table th {-->
+<!--    text-align: center;-->
+<!--    padding: 8px;-->
+
+<!--}-->
+<!--.fl-table td {-->
+<!--    border-right: 1px solid #f8f8f8;-->
+<!--    font-size: 12px;-->
+<!--     box-sizing: border-box;-->
+<!--      cursor: pointer;-->
+<!--    transition: transform .10s;-->
+<!--}-->
+<!--.fl-table td:hover{-->
+<!--    transform: scale(1.20 );-->
+<!--}-->
+
+<!--.fl-table td {-->
+<!--    border-right: 1px solid #f8f8f8;-->
+<!--    font-size: 12px;-->
+
+<!--}-->
+
+<!--.fl-table thead th {-->
+<!--    color: #ffffff;-->
+<!--    background: #324960;-->
+<!--}-->
+
+<!--.fl-table thead th:nth-child(odd) {-->
+<!--    color: #ffffff;-->
+<!--    background: #324960;-->
+<!--}-->
+
+<!--.fl-table tr:nth-child(even) {-->
+<!--    background: #F8F8F8;-->
+<!--}-->
+
+<!--/* Responsive */-->
+
+<!--@media (max-width: 767px) {-->
+<!--    .fl-table {-->
+<!--        display: block;-->
+<!--        width: 100%;-->
+<!--    }-->
+<!--    .table-wrapper:before{-->
+<!--        content: "Scroll horizontally >";-->
+<!--        display: block;-->
+<!--        text-align: right;-->
+<!--        font-size: 11px;-->
+<!--        color: white;-->
+<!--        padding: 0 0 10px;-->
+<!--    }-->
+<!--    .fl-table thead, .fl-table tbody, .fl-table thead th {-->
+<!--        display: block;-->
+<!--    }-->
+<!--    .fl-table thead th:last-child{-->
+<!--        border-bottom: none;-->
+<!--    }-->
+<!--    .fl-table thead {-->
+<!--        float: left;-->
+<!--    }-->
+<!--    .fl-table tbody {-->
+<!--        width: auto;-->
+<!--        position: relative;-->
+<!--        overflow-x: auto;-->
+<!--    }-->
+<!--    .fl-table td, .fl-table th {-->
+<!--        padding: 20px .625em .625em .625em;-->
+<!--        height: 60px;-->
+<!--        vertical-align: middle;-->
+<!--        box-sizing: border-box;-->
+<!--        overflow-x: hidden;-->
+<!--        overflow-y: auto;-->
+<!--        width: 120px;-->
+<!--        font-size: 13px;-->
+<!--        text-overflow: ellipsis;-->
+<!--    }-->
+<!--    .fl-table thead th {-->
+<!--        text-align: left;-->
+<!--        border-bottom: 1px solid #f7f7f9;-->
+<!--    }-->
+<!--    .fl-table tbody tr {-->
+<!--        display: table-cell;-->
+<!--    }-->
+<!--    .fl-table tbody tr:nth-child(odd) {-->
+<!--        background: none;-->
+<!--    }-->
+<!--    .fl-table tr:nth-child(even) {-->
+<!--        background: transparent;-->
+<!--    }-->
+<!--    .fl-table tr td:nth-child(odd) {-->
+<!--        background: #F8F8F8;-->
+<!--        border-right: 1px solid #E6E4E4;-->
+<!--    }-->
+<!--    .fl-table tr td:nth-child(even) {-->
+<!--            border-right: 1px solid #E6E4E4;-->
+<!--    }-->
+<!--    .fl-table tbody td {-->
+<!--        display: block;-->
+<!--        text-align: center;-->
+<!--    }-->
+<!--}-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<center><h1 style="background-color:#324960;"> Cargo Information</h1></center>-->
+<!--<div class="fl-table">-->
+<!--    <p>  Results between :  {{ content.p1 }} to {{ content.p2 }} <a href="{% url 'search'%}" class="text-dark">click here</a></p>-->
+
+<!--</div>-->
+<!--<div class="table-wrapper">-->
+<!--    <table class="fl-table">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--           <th>Cargo Number</th>-->
+<!--             <th>Transit Days</th>-->
+<!--         <th>Origin Port</th>-->
+
+<!--            <th>Currency{Rs}</th>-->
+<!--&lt;!&ndash;            <th>Avail Seats</th>&ndash;&gt;-->
+<!--         <th>Destination Port</th>-->
+<!--         <th>Cargo Status</th>-->
+<!--&lt;!&ndash;            <th>Book</th>&ndash;&gt;-->
+<!--             <th>Book Status</th>-->
+
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+
+<!--        {% for cars in shri %}-->
+
+
+<!--        <tr>-->
+<!--    <td>{{cars.carnumber}}</td>-->
+<!--    <td>{{cars.runningdays}}</td>-->
+
+<!--    <td>{{cars.carstartlocation}}</td>-->
+
+<!--    <td>{{cars.carfourthlocation}}</td>-->
+<!--&lt;!&ndash;        <td>{{cars.availableSeatsStop4}}</td>&ndash;&gt;-->
+
+<!--    <td>{{cars.carendlocation}}</td>-->
+<!--    <td>{{cars.carstatus}}</td>-->
+
+<!--                 <td><a href="/book">{{cars.carthridlocation}} </a></td>-->
+
+<!--            -->
+<!--    </tr>-->
+
+<!--        {% endfor %}-->
+<!--        <tbody>-->
+
+<!--    </table>-->
+
+<!--</div>-->
+
+
+<!DOCTYPE html>
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 align="center" style="color:red">YOUR CONTAINER BOOK SUCESSFULLY</h1>
+
+<h2 align="center" style="color:green">fill up your cargo information and Download Pdf </h2>
+<!--</body>-->
+<!--</html>-->
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Admin Form</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <script src="https://kit.fontawesome.com/adde82fe4a.js" crossorigin="anonymous"></script>
+
+</head>
+<style>
+  {% load  static %}
+    .btn {width:150px; background-color:#4682B4; color:#FFFFFF;
+    font-family:times new roman; font-size:14pt}
+     background:url("{% static 'images/cargo9.jpg' %}") no-repeat;
+</style>
+<body>
+
+<form action="#" method="POST">
+    {% csrf_token %}
+    <table border="0" align="center">
+        <!-- {% csrf_token %} -->
+        <!-- <div class="wrapper">
+            <div class="title"> -->
+        <tr>
+            <th colspan="4" align="center"><h1 style="color: #4682B4;">
+                Download PDF</h1></th>
+        </tr>
+        <!-- </div> -->
+        <!--Car Number-->
+        <!-- <div class="form">
+        <div class="input_field"> -->
+        <tr>
+            <td><i class="fa-solid fa-train-subway"></i>
+                <fieldset>
+                    <legend>Cargo No*</legend>
+                    <input type="text" name="carnumber" placeholder="Cargo number" class="input" required autofocus>
+                </fieldset>
+            </td>
+        </tr>
+        <!-- </div> -->
+        <!--Car Start Time-->
+        <!-- <div class="form"> -->
+        <!--          <div class="input_field">-->
+        <!--            <input type="datetime-local"  name="carstarttime"  class="input" required autofocus>-->
+        <!--            <i class="fas fa-user"></i>-->
+        <!--          </div>-->
+        <!-- <div class="input_field"> -->
+        <tr>
+            <td> <i class="fa-solid fa-calendar-day"></i>
+                <fieldset>
+                    <legend>Transit Days*</legend>
+                    <input type="text" name="runningdays" placeholder="Transit Days"  aria-describedby="passwordHelpInline" required autofocus>
+                </fieldset>
+            </td>
+        </tr>
+        <!-- </div>
+         </div> -->
+
+        <!--Car Start Location-->
+        <!-- <div class="input_field"> -->
+        <tr>
+            <td><i class="fa fa-map-marker" aria-hidden="true"></i>
+                <!--                 <input type="text" name="carstartlocation" placeholder="Origin Port" class="input" required autofocus>-->
+
+                <fieldset>
+                    <legend>origin port*</legend>
+                    <select  name="carstartlocation" placeholder="Origin Port" aria-describedby="passwordHelpInline" required autofocus>
+                        <optgroup label="port">
+                            <option value="port">port</option>
+                            <option value="Deendayal Port Trust">Deendayal Port Trust</option>
+                            <option value="Paradip Port Trust">Paradip Port Trust</option>
+                            <option value="Jawaharlal Nehru Port Trust">Jawaharlal Nehru Port Trust</option>
+                            <option value="Visakhapatnam Port Trust">Visakhapatnam Port Trust</option>
+                            <option value="Mumbai Port Trust">Mumbai Port Trust</option>
+                            <option value="Syama Prasad Mookerjee Port Trust">Syama Prasad Mookerjee Port Trust</option>
+                            <option value="Chennai Port Trust">Chennai Port Trust</option>
+                            <option value="New Mangaluru Port Trust">New Mangaluru Port Trust</option>
+                            <option value="V.O. Chidambaranar Port Trust">V.O. Chidambaranar Port Trust</option>
+                            <option value="Cochin Port Trust">Cochin Port Trust</option>
+                            <option value="Kamarajar Port Limited">Kamarajar Port Limited</option>
+                            <option value="Mormugao Port Trust">Mormugao Port Trust</option>
+
+                        </optgroup>
+                    </select>
+                </fieldset>
+            </td>
+        </tr>
+        <!-- </div> -->
+        <!-- <div class="input_field">
+        <input type="hidden" name="availableSeatsStop1" placeholder="availableSeatsStop1" value=0  class="input" required autofocus>
+        <i class="fa fa-wheelchair"></i>
+      </div> -->
+        <!-- <div class="input_field">
+         <input type="text" name="carsecondlocation" placeholder="Second Location" class="input" required autofocus>
+                      <i class="fa fa-map-marker" aria-hidden="true"></i>
+
+       </div>
+          <div class="input_field">
+         <input type="hidden" name="availableSeatsStop2" placeholder="availableSeatsStop2" value=0  class="input" required autofocus>
+         <i class="fa fa-wheelchair"></i>
+       </div>
+        <div class="input_field">
+         <input type="text" name="carthridlocation" placeholder="Thrid Location" class="input" required autofocus>
+                                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+
+       </div> -->
+        <!-- <div class="input_field">
+        <input type="hidden" name="availableSeatsStop3" placeholder="availableSeatsStop3" value=0  class="input" required autofocus>
+        <i class="fa fa-wheelchair"></i>
+      </div> -->
+        <!-- <div class="input_field"> -->
+        <tr>
+            <td><i class="fa fa-map-marker" aria-hidden="true"></i>
+                <fieldset>
+                    <legend>Rs*</legend>
+                    <input type="text" name="carfourthlocation" placeholder="Currency{INR}" aria-describedby="passwordHelpInline" required autofocus>
+
+                </fieldset></td>
+        </tr>
+
+        <!-- </div> -->
+        <!-- <div class="input_field">
+        <input type="hidden" name="availableSeatsStop4" placeholder="availableSeatsStop4" value=0 class="input" required autofocus>
+        <i class="fa fa-wheelchair"></i>
+      </div> -->
+        <!--Car End Location-->
+        <!-- <div class="input_field"> -->
+        <tr>
+            <td><i class="fa fa-map-marker" aria-hidden="true"></i>
+                <!--                 <input type="text" name="carendlocation" placeholder="Destination Port" class="input" required autofocus>-->
+                <fieldset>
+                    <legend>destination port*</legend>
+                    <select name="carendlocation" >
+                        <optgroup label="port">
+                            <option value="port">port</option>
+                            <option value="Shanghai, China">Shanghai, China</option>
+                            <option value="Singapore">Singapore</option>
+                            <option value="Busan, South Korea">Busan, South Korea</option>
+                            <option value="Jebel Ali, Dubai, United Arab Emirates">Jebel Ali, Dubai, United Arab Emirates</option>
+                            <option value="Port Klang, Malaysia">Port Klang, Malaysia</option>
+                            <option value="Los Angeles, U.S.A">Los Angeles, U.S.A</option>
+                            <option value="Hamburg, Germany">Hamburg, Germany</option>
+                            <option value="Keihin Ports, Japan">Keihin Ports, Japan</option>
+                            <option value="Colombo, Sri Lanka">Colombo, Sri Lanka</option>
+                            <option value="Tokyo,japan">Tokyo,japan</option>
+                            <option value="Port of Jebel Ali">Port of Jebel Ali</option>
+                            <option value="Mina Khalid Port">Mina Khalid Port</option>
+                            <option value="Vladivostok (RUVVO)">Vladivostok (RUVVO)</option>
+                            <option value="Kaliningrad (RUKGD)">Kaliningrad (RUKGD)</option>
+
+
+                        </optgroup>
+                    </select>
+                </fieldset>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td><i class="fa fa-map-marker" aria-hidden="true"></i>
+                <fieldset>
+                    <legend>Book</legend>
+                    <!--                <input type="text" name="carthridlocation" placeholder="Book Status" class="input" required autofocus>-->
+                    <select name="carthridlocation" placeholder="Thrid Location" aria-describedby="passwordHelpInline" required autofocus>
+                        <optgroup label="Status">
+                            <option>Book Now</option>
+                        </optgroup>
+                    </select>
+                </fieldset>
+            </td>
+        </tr>
+
+
+        <!-- </div> -->
+        <!--Car End Time-->
+        <!--          <div class="input_field">-->
+        <!--            <input type="datetime-local" name="carendtime" class="input"  required autofocus>-->
+        <!--            <i class="fas fa-lock"></i>-->
+        <!--          </div>-->
+        <!--Car Status-->
+        <!-- <div class="input_field"> -->
+        <tr><td>
+            <input type="radio" name="carstatus" value="Active" id="active">
+            <label for="active">Active</label>
+            <input type="radio" name="carstatus" value="Inactive"  id="active1">
+            <label for="active1">Inactive</label>
+        </td></tr>
+        <!-- </div> -->
+        <!--            <tr><td>-->
+        <!--            <input type="radio" name="Book" value="Book" id="Book">-->
+        <!--            <label for="Book">Book</label>-->
+        <!--            <input type="radio" name="carstatus" value="Inactive"  id="active1">-->
+        <!--            <label for="active1">Inactive</label>-->
+        <!--            </td></tr>-->
+
+        <!-- <div class="btn"> -->
+        <tr>
+            <!--      <div class="d-flex align-items-center">-->
+            <th colspan="4" align="center" style="color: cornflowerblue;"><a href="book/"><button type="submit" class="btn btn-primary ms-auto">
+                Download
+            </button></a></th>
+            </div>
+        </tr>
+
+        <!--        <tr>-->
+        <!--        <th colspan="4" align="center" style="color: cornflowerblue;"><a href="#"><button type="submit" class="btn"> download</button> </a></th>-->
+        <!--        </tr>-->
+        <!--          </div>-->
+        <br>
+        <div>
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags}} alert-dismissible fade show" role="alert" align="center">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+        </div>
+        </div>
+    </table>
+</form>
+</body>
